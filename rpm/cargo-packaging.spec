@@ -26,9 +26,9 @@ URL:            https://github.com/Firstyear/cargo-packaging
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-Patch0:         0001-rust1.52.patch
+Patch0:         0001-rust1-52.patch
 Requires:       cargo
-Requires:       cargo-auditable
+#Requires:       cargo-auditable
 #Requires:       zstd
 BuildRequires:  cargo
 #BuildRequires:  zstd
@@ -40,8 +40,8 @@ A set of macros and tools to assist with cargo and rust packaging, written in a 
 that follows upstream rust's best practices.
 
 %prep
-%autosetup -a1 -n %{name}-%{version}/upstream
-%patch -p1
+%setup -a1 -n %{name}-%{version}/upstream
+%patch
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
