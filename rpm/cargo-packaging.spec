@@ -26,12 +26,11 @@ URL:            https://github.com/Firstyear/cargo-packaging
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-Patch0:         0001-rust1-52.patch
 Requires:       cargo
 #Requires:       cargo-auditable
-#Requires:       zstd
+Requires:       zstd
 BuildRequires:  cargo
-#BuildRequires:  zstd
+BuildRequires:  zstd
 
 Conflicts:      rust-packaging
 
@@ -41,7 +40,6 @@ that follows upstream rust's best practices.
 
 %prep
 %setup -a1 -n %{name}-%{version}/upstream
-%patch
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
