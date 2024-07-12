@@ -45,7 +45,8 @@ cp %{SOURCE2} .cargo/config
 tar -xJf %{SOURCE1}
 
 %build
-cargo build --offline --release
+cargo build --offline
+#FIXME removed the --release
 
 %install
 install -D -p -m 0644 -t %{buildroot}%{_fileattrsdir} %{_builddir}/%{name}-%{version}/rust.attr
