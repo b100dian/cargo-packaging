@@ -42,6 +42,7 @@ that follows upstream rust's best practices.
 %setup -a1 -n %{name}-%{version}/upstream
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
+tar -xJf %{SOURCE1}
 
 %build
 cargo build --offline --release
@@ -67,4 +68,3 @@ install -D -p -m 0755 -t %{buildroot}%{_sysconfdir}/bash_completion.d %{_builddi
 %{_sysconfdir}/bash_completion.d/*
 
 %changelog
-
