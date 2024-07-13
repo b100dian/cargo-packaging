@@ -51,11 +51,17 @@ cargo build --offline
 %install
 install -D -p -m 0644 -t %{buildroot}%{_fileattrsdir} %{_builddir}/%{name}-%{version}/upstream/rust.attr
 install -D -p -m 0644 -t %{buildroot}%{_rpmconfigdir}/macros.d %{_builddir}/%{name}-%{version}/upstream/macros.cargo
+#debuggin
+ls -l %{_builddir}/%{name}-%{version}/upstream || :
+ls -l %{_builddir}/%{name}-%{version}/upstream/target || :
+ls -l %{_builddir}/%{name}-%{version}/upstream/target/debug || :
+ls -l %{_builddir}/%{name}-%{version}/upstream/target/debug/build || :
+ls -l %{_builddir}/%{name}-%{version}/upstream/target/debug/build/completions || :
 
-install -D -p -m 0755 -t %{buildroot}%{_rpmconfigdir} %{_builddir}/%{name}-%{version}/target/release/rust-rpm-prov
+install -D -p -m 0755 -t %{buildroot}%{_rpmconfigdir} %{_builddir}/%{name}-%{version}/upstream/target/debug/rust-rpm-prov
 
-install -D -p -m 0755 -t %{buildroot}%{_sysconfdir}/zsh_completion.d %{_builddir}/%{name}-%{version}/target/release/build/completions/_rust-rpm-prov
-install -D -p -m 0755 -t %{buildroot}%{_sysconfdir}/bash_completion.d %{_builddir}/%{name}-%{version}/target/release/build/completions/rust-rpm-prov.bash
+install -D -p -m 0755 -t %{buildroot}%{_sysconfdir}/zsh_completion.d %{_builddir}/%{name}-%{version}/upstream/target/debug/build/completions/_rust-rpm-prov
+install -D -p -m 0755 -t %{buildroot}%{_sysconfdir}/bash_completion.d %{_builddir}/%{name}-%{version}/upstream/target/debug/build/completions/rust-rpm-prov.bash
 
 %files
 
