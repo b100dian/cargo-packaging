@@ -38,7 +38,7 @@ Conflicts:      rust-packaging
 A set of macros and tools to assist with cargo and rust packaging, written in a manner
 that follows upstream rust's best practices.
 
-%define BUILD_DIR "$PWD"/upstream/target
+%define BUILD_DIR "$PWD"/target
 
 %prep
 %setup -a1 -n %{name}-%{version}/upstream
@@ -102,10 +102,10 @@ cargo build --offline --release
 install -D -p -m 0644 -t %{buildroot}%{_fileattrsdir} %{_builddir}/%{name}-%{version}/upstream/rust.attr
 install -D -p -m 0644 -t %{buildroot}%{_rpmconfigdir}/macros.d %{_builddir}/%{name}-%{version}/upstream/macros.cargo
 
-install -D -p -m 0755 -t %{buildroot}%{_rpmconfigdir} %{_builddir}/%{name}-%{version}/upstream/target/release/rust-rpm-prov
+install -D -p -m 0755 -t %{buildroot}%{_rpmconfigdir} %{BUILD_DIR}/%{SB2_TARGET}/release/rust-rpm-prov
 
-install -D -p -m 0755 -t %{buildroot}%{_sysconfdir}/zsh_completion.d %{_builddir}/%{name}-%{version}/upstream/target/release/build/completions/_rust-rpm-prov
-install -D -p -m 0755 -t %{buildroot}%{_sysconfdir}/bash_completion.d %{_builddir}/%{name}-%{version}/upstream/target/release/build/completions/rust-rpm-prov.bash
+install -D -p -m 0755 -t %{buildroot}%{_sysconfdir}/zsh_completion.d %{BUILD_DIR}/%{SB2_TARGET}/release/build/completions/_rust-rpm-prov
+install -D -p -m 0755 -t %{buildroot}%{_sysconfdir}/bash_completion.d %{BUILD_DIR}/%{SB2_TARGET}/release/build/completions/rust-rpm-prov.bash
 
 %files
 
