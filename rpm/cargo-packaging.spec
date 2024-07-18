@@ -42,7 +42,7 @@ that follows upstream rust's best practices.
 
 %prep
 %setup -a1 -n %{name}-%{version}/upstream
-mkdir .cargo
+mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
 tar -xJf %{SOURCE1}
 
