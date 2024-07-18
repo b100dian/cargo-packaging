@@ -95,7 +95,7 @@ export RANLIB="gcc-ranlib"
 export PKG_CONFIG="pkg-config"
 
 
-cargo build --offline --release
+cargo build --offline --release -j1
 
 
 %install
