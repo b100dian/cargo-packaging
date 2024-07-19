@@ -99,8 +99,8 @@ cargo build --offline --release -j1
 
 
 %install
-install -D -p -m 0644 -t %{buildroot}%{_fileattrsdir} %{_builddir}/%{name}-%{version}/upstream/rust.attr
-install -D -p -m 0644 -t %{buildroot}%{_rpmconfigdir}/macros.d %{_builddir}/%{name}-%{version}/upstream/macros.cargo
+install -D -p -m 0644 -t %{buildroot}%{_fileattrsdir} %{_builddir}/rust.attr
+install -D -p -m 0644 -t %{buildroot}%{_rpmconfigdir}/macros.d %{_builddir}/macros.cargo
 
 install -D -p -m 0755 -t %{buildroot}%{_rpmconfigdir} %{BUILD_DIR}/%{SB2_TARGET}/release/rust-rpm-prov
 
